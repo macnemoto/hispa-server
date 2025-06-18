@@ -25,9 +25,6 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    print('Dame la ip a sincronizar:')
-    ip = input()
-    print(f'Ip sincronizada con exito {ip}')
     return {"Hello": "World Neko"}
 
 @app.get("/post/{post_id}")
@@ -37,7 +34,7 @@ def post_messages(post_id):
             browser = p.chromium.launch(headless=False)
             page = browser.new_page()
             page.goto(f"https://8chan.moe/arepa/res/{post_id}.html")
-            button = page.locator("body > div > fieldset > h1:nth-child(10) > a")
+            button = page.locator("body > div > fieldset > h1:nth-child(11) > a")
             button.click()
             # page.wait_for_timeout(10000)
             page.wait_for_load_state("load")
